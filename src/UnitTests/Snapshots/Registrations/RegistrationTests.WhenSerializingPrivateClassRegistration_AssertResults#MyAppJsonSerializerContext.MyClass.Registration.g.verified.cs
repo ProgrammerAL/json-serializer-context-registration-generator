@@ -4,6 +4,6 @@ using ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(MyClass))]
- partial MyAppJsonSerializerContext : JsonSerializerContext
+ partial class MyAppJsonSerializerContext : JsonSerializerContext
 {
 }

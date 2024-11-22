@@ -26,7 +26,7 @@ public record RegistrationToGenerateInfo(
         _ = builder.AppendLine($"");
 
         _ = builder.AppendLine($"[JsonSerializable(typeof({Registration.ClassName}))]");
-        _ = builder.AppendLine($"{SerializerContext.AccessModifier} partial {SerializerContext.ClassName} : JsonSerializerContext");
+        _ = builder.AppendLine($"{SerializerContext.AccessModifier} partial class {SerializerContext.ClassName} : JsonSerializerContext");
         _ = builder.AppendLine("{");
         _ = builder.AppendLine("}");
 
