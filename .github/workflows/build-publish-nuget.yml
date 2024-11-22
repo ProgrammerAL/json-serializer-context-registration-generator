@@ -1,0 +1,35 @@
+name: Build/Publish Nuget
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      push_nuget:
+        description: "Push to nuget.org"
+        required: true
+        type: boolean
+        default: false
+      nuget_version_override:
+        description: "Nuget Version Override"
+        required: false
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_VERSION: 9.x.x
+      SRC_DIRECTORY_PATH_LIB: ${{ github.workspace }}/src
+      PROJECT_NAME_LIB: PublicInterfaceGenerator
+      NUGET_VERSION: ${{ github.event.inputs.nuget_version_override || '0.1.0-preview' }}.${{ github.run_number }}
+      PUSH_NUGET: ${{ github.event.inputs.push_nuget || false }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Cake Frosting Build and Push NuGet
+        run: dotnet run --project ${{ github.workspace }}/build/Build.csproj -- --srcDirectoryPath=${{ env.SRC_DIRECTORY_PATH_LIB }} --nugetVersion=${{ env.NUGET_VERSION }} --pushNuget=${{ env.PUSH_NUGET }} --nugetPushToken=${{ secrets.NUGET_PUSH_TOKEN }}

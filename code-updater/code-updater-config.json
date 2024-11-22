@@ -1,0 +1,45 @@
+{
+  "updatePathOptions": {
+    "rootDirectory": "../",
+    "ignorePatterns": [
+      "/code-updater/"
+    ]
+  },
+  "loggingOptions": {
+    "logLevel": "Verbose",
+    "outputFile": "./code-updater-output.txt"
+  },
+  "cSharpOptions": {
+    "csProjVersioningOptions": {
+      "treatWarningsAsErrors": true,
+      "targetFramework": "net9.0",
+      "langVersion": "latest"
+    },
+    "csProjDotNetAnalyzerOptions": {
+      "enableNetAnalyzers": true,
+      "enforceCodeStyleInBuild": true
+    },
+    "cSharpStyleOptions": {
+      "runDotnetFormat": false
+    },
+    "nugetOptions": {
+      "auditOptions": {
+        "nuGetAudit": true,
+        "auditMode": "all",
+        "auditLevel": "low"
+      },
+      "updateOptions": {
+        "updateTopLevelNugetsInCsProj": true,
+        "updateTopLevelNugetsNotInCsProj": false
+      }
+    }
+  },
+  "regexSearchOptions": {
+    "searches": [
+      {
+        "searchRegex": "[0-9]{1,2}\\..+\\.x",
+        "description": "YAML Dotnet Version"
+      }
+    ]
+  }
+}

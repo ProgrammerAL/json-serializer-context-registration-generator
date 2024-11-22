@@ -1,0 +1,445 @@
+# Remove the line below if you want to inherit .editorconfig settings from higher directories
+root = true
+
+# C# files
+[*.cs]
+
+#### Core EditorConfig Options ####
+
+# Indentation and spacing
+indent_size = 4
+indent_style = space
+tab_width = 4
+
+# New line preferences
+end_of_line = crlf
+insert_final_newline = true
+
+#### .NET Coding Conventions ####
+
+# this. and Me. preferences
+dotnet_style_qualification_for_event = false:suggestion
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+
+# Language keywords vs BCL types preferences
+dotnet_style_predefined_type_for_locals_parameters_members = true:error
+dotnet_style_predefined_type_for_member_access = true:error
+
+# Parentheses preferences
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:error
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:error
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
+#dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:error
+
+# Modifier preferences
+dotnet_style_require_accessibility_modifiers = always_for_clarity:error
+
+# Expression-level preferences
+csharp_style_deconstructed_variable_declaration = true:suggestion
+csharp_style_inlined_variable_declaration = true:suggestion
+csharp_style_throw_expression = true:error
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_null_propagation = true:error
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_prefer_auto_properties = true:error
+dotnet_style_prefer_compound_assignment = true:suggestion
+dotnet_style_prefer_conditional_expression_over_assignment = true:silent
+dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
+dotnet_style_prefer_inferred_tuple_names = true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:error
+
+# 'using' directive preferences
+csharp_using_directive_placement = outside_namespace:error
+
+# Field preferences
+dotnet_style_readonly_field = true:error
+
+# Parameter preferences
+dotnet_code_quality_unused_parameters = non_public:suggestion
+
+#### C# Coding Conventions ####
+
+# var preferences
+#csharp_style_var_elsewhere = true:suggestion
+#csharp_style_var_for_built_in_types = true:suggestion
+#csharp_style_var_when_type_is_apparent = true:suggestion
+
+# Expression-bodied members
+csharp_style_expression_bodied_accessors = true:suggestion
+csharp_style_expression_bodied_constructors = true:suggestion
+csharp_style_expression_bodied_indexers = true:suggestion
+csharp_style_expression_bodied_lambdas = true:suggestion
+csharp_style_expression_bodied_local_functions = true:suggestion
+csharp_style_expression_bodied_methods = false:silent
+csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_properties = true:suggestion
+
+# Pattern matching preferences
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+
+# Null-checking preferences
+csharp_style_conditional_delegate_call = true:error
+
+# Modifier preferences
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+
+# Code-block preferences
+csharp_prefer_braces = true:error
+
+# Expression-level preferences
+csharp_prefer_simple_default_expression = true:error
+csharp_style_pattern_local_over_anonymous_function = true:suggestion
+csharp_style_prefer_index_operator = true:suggestion
+csharp_style_prefer_range_operator = true:suggestion
+csharp_style_unused_value_assignment_preference = discard_variable:error
+csharp_style_unused_value_expression_statement_preference = discard_variable:error
+
+#### C# Formatting Rules ####
+
+# New line preferences
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_query_expression_clauses = true
+
+# Indentation preferences
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_labels = one_less_than_current
+csharp_indent_switch_labels = true
+
+# Space preferences
+csharp_space_after_cast = false:error
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false:error
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false:error
+csharp_space_before_dot = false:error
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false:error
+csharp_space_between_square_brackets = false:error
+
+# Wrapping preferences
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = true
+
+
+dotnet_diagnostic.CA1001.severity = warning
+
+dotnet_diagnostic.CA1009.severity = warning
+
+dotnet_diagnostic.CA1016.severity = warning
+
+dotnet_diagnostic.CA1026.severity = warning
+
+dotnet_diagnostic.CA1033.severity = warning
+
+dotnet_diagnostic.CA1049.severity = warning
+
+dotnet_diagnostic.CA1060.severity = warning
+
+dotnet_diagnostic.CA1061.severity = warning
+
+dotnet_diagnostic.CA1063.severity = none
+
+dotnet_diagnostic.CA1065.severity = warning
+
+dotnet_diagnostic.CA1301.severity = warning
+
+dotnet_diagnostic.CA1400.severity = warning
+
+dotnet_diagnostic.CA1401.severity = warning
+
+dotnet_diagnostic.CA1403.severity = warning
+
+dotnet_diagnostic.CA1404.severity = warning
+
+dotnet_diagnostic.CA1405.severity = warning
+
+dotnet_diagnostic.CA1410.severity = warning
+
+dotnet_diagnostic.CA1415.severity = warning
+
+dotnet_diagnostic.CA1821.severity = warning
+
+dotnet_diagnostic.CA1900.severity = warning
+
+dotnet_diagnostic.CA1901.severity = warning
+
+dotnet_diagnostic.CA2002.severity = warning
+
+dotnet_diagnostic.CA2100.severity = warning
+
+dotnet_diagnostic.CA2101.severity = warning
+
+dotnet_diagnostic.CA2108.severity = warning
+
+dotnet_diagnostic.CA2111.severity = warning
+
+dotnet_diagnostic.CA2112.severity = warning
+
+dotnet_diagnostic.CA2114.severity = warning
+
+dotnet_diagnostic.CA2116.severity = warning
+
+dotnet_diagnostic.CA2117.severity = warning
+
+dotnet_diagnostic.CA2122.severity = warning
+
+dotnet_diagnostic.CA2123.severity = warning
+
+dotnet_diagnostic.CA2124.severity = warning
+
+dotnet_diagnostic.CA2126.severity = warning
+
+dotnet_diagnostic.CA2131.severity = warning
+
+dotnet_diagnostic.CA2132.severity = warning
+
+dotnet_diagnostic.CA2133.severity = warning
+
+dotnet_diagnostic.CA2134.severity = warning
+
+dotnet_diagnostic.CA2137.severity = warning
+
+dotnet_diagnostic.CA2138.severity = warning
+
+dotnet_diagnostic.CA2140.severity = warning
+
+dotnet_diagnostic.CA2141.severity = warning
+
+dotnet_diagnostic.CA2146.severity = warning
+
+dotnet_diagnostic.CA2147.severity = warning
+
+dotnet_diagnostic.CA2149.severity = warning
+
+dotnet_diagnostic.CA2200.severity = warning
+
+dotnet_diagnostic.CA2202.severity = warning
+
+dotnet_diagnostic.CA2207.severity = warning
+
+dotnet_diagnostic.CA2212.severity = warning
+
+dotnet_diagnostic.CA2213.severity = warning
+
+dotnet_diagnostic.CA2214.severity = warning
+
+dotnet_diagnostic.CA2216.severity = warning
+
+dotnet_diagnostic.CA2220.severity = warning
+
+dotnet_diagnostic.CA2229.severity = warning
+
+dotnet_diagnostic.CA2231.severity = warning
+
+dotnet_diagnostic.CA2232.severity = warning
+
+dotnet_diagnostic.CA2235.severity = warning
+
+dotnet_diagnostic.CA2236.severity = warning
+
+dotnet_diagnostic.CA2237.severity = warning
+
+dotnet_diagnostic.CA2238.severity = warning
+
+dotnet_diagnostic.CA2240.severity = warning
+
+dotnet_diagnostic.CA2241.severity = warning
+
+dotnet_diagnostic.CA2242.severity = warning
+
+dotnet_diagnostic.S101.severity = suggestion
+
+dotnet_diagnostic.S3881.severity = suggestion
+
+# XML comments
+dotnet_diagnostic.SA0001.severity = none
+
+# The spacing around a semicolon is incorrect, within a C# code file.
+dotnet_diagnostic.SA1002.severity = none
+
+# A single-line comment within a C# code file does not begin with a single space
+dotnet_diagnostic.SA1005.severity = none
+
+# A closing parenthesis within a C# statement is not spaced correctly.
+dotnet_diagnostic.SA1009.severity = none
+
+# A closing square bracket within a C# statement is not spaced correctly.
+dotnet_diagnostic.SA1011.severity = none
+
+# An implicitly typed array allocation within a C# code file is not spaced correctly.
+dotnet_diagnostic.SA1026.severity = none
+
+# A line of code ends with a space, tab, or other whitespace characters before the end of line character(s).
+dotnet_diagnostic.SA1028.severity = none
+
+# Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = none
+
+# Block statements should not contain embedded comments
+dotnet_diagnostic.SA1108.severity = none
+
+# Split parameters should start on line after declaration
+dotnet_diagnostic.SA1116.severity = none
+
+# Parameters should be on same line or separate lines
+dotnet_diagnostic.SA1117.severity = none
+
+# Parameter should not span multiple lines
+dotnet_diagnostic.SA1118.severity = none
+
+# A C# statement contains parenthesis which are unnecessary and should be removed.
+dotnet_diagnostic.SA1119.severity = none
+
+# Use string.Empty for empty strings
+dotnet_diagnostic.SA1122.severity = none
+
+# Generic type constraints should be on their own line
+dotnet_diagnostic.SA1127.severity = none
+
+# Put constructor initializers on their own line
+dotnet_diagnostic.SA1128.severity = none
+
+# Do not combine fields
+dotnet_diagnostic.SA1132.severity = none
+
+# Do not combine attributes
+dotnet_diagnostic.SA1133.severity = none
+
+# Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = none
+
+# Elements should be ordered by access
+dotnet_diagnostic.SA1202.severity = none
+
+# Constants should appear before fields
+dotnet_diagnostic.SA1203.severity = none
+
+# Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none
+
+# Readonly fields should appear before non-readonly fields
+dotnet_diagnostic.SA1214.severity = none
+
+# Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = none
+
+# A field name in C# contains an underscore.
+dotnet_diagnostic.SA1310.severity = none
+
+# The name of a parameter in C# does not begin with a lower-case letter. - Disabled because of Records
+dotnet_diagnostic.SA1313.severity = none
+
+# The name of a C# type parameter does not begin with the capital letter T.
+dotnet_diagnostic.SA1314.severity = none
+
+# Fields should be private
+dotnet_diagnostic.SA1401.severity = none
+
+# File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+
+# Code analysis suppression should have justification
+dotnet_diagnostic.SA1404.severity = none
+
+# Arithmetic expressions should declare precedence
+dotnet_diagnostic.SA1407.severity = none
+
+# Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = none
+
+# Statement should not be on a single line
+dotnet_diagnostic.SA1501.severity = none
+
+# Element should not be on a single line
+dotnet_diagnostic.SA1502.severity = none
+
+# Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
+
+# Single-line comment should be preceded by blank line
+dotnet_diagnostic.SA1515.severity = none
+
+# Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = none
+
+# Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+
+# Partial elements should be documented
+dotnet_diagnostic.SA1601.severity = none
+
+# Enumeration items should be documented
+dotnet_diagnostic.SA1602.severity = none
+
+# Element documentation should have summary
+dotnet_diagnostic.SA1604.severity = none
+
+# A C# method, constructor, delegate or indexer element is missing documentation for one or more of its parameters.
+dotnet_diagnostic.SA1611.severity = none
+
+# A C# element is missing documentation for its return value.
+dotnet_diagnostic.SA1615.severity = none
+
+# A generic C# element is missing documentation for one or more of its generic type parameters.
+dotnet_diagnostic.SA1618.severity = none
+
+# The documentation text within a C# property's <summary> tag does not match the accessors within the property.
+dotnet_diagnostic.SA1623.severity = none
+
+# A section of the Xml header documentation for a C# element does not end with a period (also known as a full stop).
+dotnet_diagnostic.SA1629.severity = none
+
+# File should have header
+dotnet_diagnostic.SA1633.severity = none
+
+# The XML documentation header for a C# constructor does not contain the appropriate summary text.
+dotnet_diagnostic.SA1642.severity = none
+
+# File name should match first type name
+dotnet_diagnostic.SA1649.severity = none
+
+# Using directive should appear within a namespace declaration
+dotnet_diagnostic.SA1200.severity = none
+
+# System using statements should be first
+dotnet_diagnostic.SA1208.severity = none
+
+# Using statements should be alphabetical
+dotnet_diagnostic.SA1210.severity = none
+
+# Keywords Must Be Spaced Correctly
+dotnet_diagnostic.SA1000.severity = none
+
+# Loops should be simplified with "LINQ" expressions
+dotnet_diagnostic.S3267.severity = suggestion
+csharp_style_namespace_declarations=file_scoped:error
+dotnet_diagnostic.S3903.severity=error
+dotnet_diagnostic.S4041.severity=error
+dotnet_diagnostic.SA1403.severity=error
