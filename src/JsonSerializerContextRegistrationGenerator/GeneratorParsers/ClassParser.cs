@@ -61,15 +61,32 @@ public static class ClassParser
         INamedTypeSymbol symbol,
         INamedTypeSymbol jsonSerializerContextType)
     {
-        var contextNamespace = jsonSerializerContextType.ContainingNamespace.Name ?? string.Empty;
+        var contextNamespace = DetermineNamespace(jsonSerializerContextType);
         var contextName = jsonSerializerContextType.Name;
-        var serializerContextInfo = new SerializerContextInfo(contextNamespace, contextName);
+        var contextAccessibility = jsonSerializerContextType.DeclaredAccessibility switch
+        {
+            Accessibility.Public => "public",
+            Accessibility.ProtectedOrInternal => "protected internal",
+            Accessibility.Protected => "protected",
+            Accessibility.Internal => "internal",
+            Accessibility.Private => "private",
+            _ => string.Empty
+        };
 
-        var symbolNamespace = symbol.ContainingNamespace.IsGlobalNamespace ? string.Empty : symbol.ContainingNamespace.ToString();
+        var serializerContextInfo = new SerializerContextInfo(contextNamespace, contextAccessibility, contextName);
+
+        var symbolNamespace = DetermineNamespace(symbol);
         var symbolName = symbol.Name;
 
         var regInfo = new RegistrationInfo(symbolNamespace, symbolName);
 
         return new RegistrationToGenerateInfo(serializerContextInfo, regInfo);
+    }
+
+    private static string DetermineNamespace(INamedTypeSymbol symbol)
+    {
+        return symbol.ContainingNamespace.IsGlobalNamespace
+            ? string.Empty
+            : symbol.ContainingNamespace.ToString() ?? string.Empty;
     }
 }

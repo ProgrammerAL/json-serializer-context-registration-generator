@@ -1,9 +1,9 @@
-﻿//HintName: MyAppJsonSerializerContext.MyRecord.Registration.g.cs
+﻿//HintName: MyAppJsonSerializerContext.MyClass.Registration.g.cs
 using ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 using ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 using System.Text.Json.Serialization;
 
-[JsonSerializable(typeof(MyRecord))]
+[JsonSerializable(typeof(MyClass))]
 internal partial MyAppJsonSerializerContext : JsonSerializerContext
 {
 }
