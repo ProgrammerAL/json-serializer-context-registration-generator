@@ -104,4 +104,30 @@ public class RegistrationTests
 
         await TestHelper.VerifyAsync(source, SnapshotsDirectory);
     }
+
+    [Fact]
+    public async Task __AAA()
+    {
+        var source = """
+            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+            public class MyClass_1
+            {
+            }
+
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+            public class MyClass_2
+            {
+            }
+
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+            public class MyClass_3
+            {
+            }
+            """;
+
+        await TestHelper.VerifyAsync(source, SnapshotsDirectory);
+    }
 }

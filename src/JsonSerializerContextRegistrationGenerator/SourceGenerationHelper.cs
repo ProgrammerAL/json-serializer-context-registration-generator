@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 
 namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
 
 public static class SourceGenerationHelper
 {
-    public static string GenerateInterface(in RegistrationToGenerateInfo info)
+    public static string GenerateSource(in ImmutableArray<RegistrationToGenerateInfo?> infos)
     {
-        return info.GenerateInterfaceDefinitionString();
+        return "";
+        //return info.GenerateInterfaceDefinitionString();
     }
 }

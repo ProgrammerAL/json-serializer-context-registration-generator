@@ -13,7 +13,7 @@ namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerat
 
 public static class ClassParser
 {
-    public static RegistrationToGenerateInfo? GetRegistrationToGenerate(GeneratorAttributeSyntaxContext context, CancellationToken ct)
+    public static GenerateInfoBase? GetRegistrationToGenerate(GeneratorAttributeSyntaxContext context, CancellationToken ct)
     {
         var symbol = context.TargetSymbol as INamedTypeSymbol;
         if (symbol is null)

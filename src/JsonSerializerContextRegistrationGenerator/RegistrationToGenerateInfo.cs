@@ -4,16 +4,19 @@ using static ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGene
 
 namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
 
+public abstract record GenerateInfoBase();
+public record JsonSourceGenerationInfo() : GenerateInfoBase;
+
 public record RegistrationToGenerateInfo(
     SerializerContextInfo SerializerContext,
-    RegistrationInfo Registration)
+    RegistrationInfo Registration) : GenerateInfoBase
 {
     public string GenerateInterfaceDefinitionString()
     {
         var builder = new StringBuilder();
 
         if (!string.IsNullOrWhiteSpace(SerializerContext.FullNamespace))
-        { 
+        {
             _ = builder.AppendLine($"using {SerializerContext.FullNamespace};");
         }
 
