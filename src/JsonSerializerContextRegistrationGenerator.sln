@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{BA342D13-5E99-4394-AD4F-578FF0DE0952}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerContextRegistrationGenerator.Runner", "JsonSerializerContextRegistrationGenerator.Runner\JsonSerializerContextRegistrationGenerator.Runner.csproj", "{537647B0-B63F-4CAF-829B-2A5747C927BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{51AFC430-E5C7-4B8D-93EA-CCE648A455D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51AFC430-E5C7-4B8D-93EA-CCE648A455D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51AFC430-E5C7-4B8D-93EA-CCE648A455D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537647B0-B63F-4CAF-829B-2A5747C927BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537647B0-B63F-4CAF-829B-2A5747C927BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537647B0-B63F-4CAF-829B-2A5747C927BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537647B0-B63F-4CAF-829B-2A5747C927BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

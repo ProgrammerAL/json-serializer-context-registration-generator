@@ -19,7 +19,6 @@ public static class TestHelper
         var syntaxTrees = sources.Select(source => CSharpSyntaxTree.ParseText(source)).ToArray();
 
         // Create references for assemblies we require
-        // We could add multiple references if required
         var references = AppDomain.CurrentDomain.GetAssemblies()
             .Where(_ => !_.IsDynamic && !string.IsNullOrWhiteSpace(_.Location))
             .Select(_ => MetadataReference.CreateFromFile(_.Location))

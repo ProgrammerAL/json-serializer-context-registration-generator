@@ -1,8 +1,6 @@
 using System.Net;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.Options;
-
 using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
 
 namespace Sample.Controllers.Status;

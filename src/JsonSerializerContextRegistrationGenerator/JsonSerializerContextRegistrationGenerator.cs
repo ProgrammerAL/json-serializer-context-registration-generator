@@ -42,7 +42,6 @@ public class JsonSerializerContextRegistrationGenerator : IIncrementalGenerator
 
     private static void GenerateCode((ImmutableArray<GenerateInfoBase?> Left, ImmutableArray<GenerateInfoBase?> Right) sources, SourceProductionContext context)
     {
-        //_ = Debugger.Launch();
         var infos = sources.Left.Concat(sources.Right);
 
         var groups = infos.Where(x => x is not null).GroupBy(x => x!.Key);

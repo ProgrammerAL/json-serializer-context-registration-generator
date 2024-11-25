@@ -39,7 +39,7 @@ public static class ClassParser
 
             if (attributeDisplayString == GeneratedJsonSerializerContextAttribute.Constants.AttributeFullName)
             {
-                return ExtractJsonSourceGenerationInfo(symbol, attributeData, symbolAttributes);
+                return ExtractJsonSourceGenerationInfo(symbol);
             }
         }
 
@@ -47,24 +47,11 @@ public static class ClassParser
     }
 
     private static JsonSourceGenerationInfo? ExtractJsonSourceGenerationInfo(
-        INamedTypeSymbol symbol, 
-        AttributeData attributeData, 
-        ImmutableArray<AttributeData> symbolAttributes)
+        INamedTypeSymbol symbol)
     {
         var jsonSerializerContextType = symbol;
 
-        var jsonSourceGenerationOptionsAttribute = symbolAttributes
-            .Where(x => x.AttributeClass?.ToDisplayString() == "System.Text.Json.Serialization.JsonSourceGenerationOptionsAttribute")
-            .FirstOrDefault();
-
-        //if (jsonSourceGenerationOptionsAttribute is null)
-        //{
-        //    // Can't generate anything if the attribute isn't used correctly
-        //    // Note: Is there a way to surface this to users?
-        //    return null;
-        //}
-
-        return TryExtractJsonSourceGenerationInfoSymbols(symbol, jsonSerializerContextType, jsonSourceGenerationOptionsAttribute);
+        return TryExtractJsonSourceGenerationInfoSymbols(symbol, jsonSerializerContextType);
     }
 
     private static RegistrationToGenerateInfo? ExtractRegistrationToGenerateInfo(INamedTypeSymbol symbol, AttributeData attributeData)
@@ -103,8 +90,7 @@ public static class ClassParser
 
     private static JsonSourceGenerationInfo? TryExtractJsonSourceGenerationInfoSymbols(
         INamedTypeSymbol symbol,
-        INamedTypeSymbol jsonSerializerContextType,
-        AttributeData? jsonSourceGenerationOptionsAttribute)
+        INamedTypeSymbol jsonSerializerContextType)
     {
         var key = DetermineContextKey(jsonSerializerContextType);
 
@@ -120,9 +106,7 @@ public static class ClassParser
             _ => string.Empty
         };
 
-        var jsonSourceGenerationOptionsAttributeString = jsonSourceGenerationOptionsAttribute?.ToString();
-
-        return new JsonSourceGenerationInfo(contextNamespace, accessibility, className, jsonSourceGenerationOptionsAttributeString, key);
+        return new JsonSourceGenerationInfo(contextNamespace, accessibility, className, key);
     }    
 
     private static string DetermineContextKey(INamedTypeSymbol jsonSerializerContextType)
