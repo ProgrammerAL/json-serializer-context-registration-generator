@@ -56,12 +56,12 @@ public static class ClassParser
             .Where(x => x.AttributeClass?.ToDisplayString() == "System.Text.Json.Serialization.JsonSourceGenerationOptionsAttribute")
             .FirstOrDefault();
 
-        if (jsonSourceGenerationOptionsAttribute is null)
-        {
-            // Can't generate anything if the attribute isn't used correctly
-            // Note: Is there a way to surface this to users?
-            return null;
-        }
+        //if (jsonSourceGenerationOptionsAttribute is null)
+        //{
+        //    // Can't generate anything if the attribute isn't used correctly
+        //    // Note: Is there a way to surface this to users?
+        //    return null;
+        //}
 
         return TryExtractJsonSourceGenerationInfoSymbols(symbol, jsonSerializerContextType, jsonSourceGenerationOptionsAttribute);
     }
@@ -103,7 +103,7 @@ public static class ClassParser
     private static JsonSourceGenerationInfo? TryExtractJsonSourceGenerationInfoSymbols(
         INamedTypeSymbol symbol,
         INamedTypeSymbol jsonSerializerContextType,
-        AttributeData jsonSourceGenerationOptionsAttribute)
+        AttributeData? jsonSourceGenerationOptionsAttribute)
     {
         var key = DetermineContextKey(jsonSerializerContextType);
 
@@ -119,7 +119,7 @@ public static class ClassParser
             _ => string.Empty
         };
 
-        var jsonSourceGenerationOptionsAttributeString = jsonSourceGenerationOptionsAttribute.ToString();
+        var jsonSourceGenerationOptionsAttributeString = jsonSourceGenerationOptionsAttribute?.ToString();
 
         return new JsonSourceGenerationInfo(contextNamespace, accessibility, className, jsonSourceGenerationOptionsAttributeString, key);
     }    

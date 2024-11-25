@@ -7,7 +7,7 @@ public record JsonSourceGenerationInfo(
     string FullNamespace,
     string AccessModifier,
     string ClassName,
-    string JsonSourceGenerationOptionsAttribute,
+    string? JsonSourceGenerationOptionsAttribute,
     string Key) : GenerateInfoBase(Key);
 
 public record RegistrationToGenerateInfo(
