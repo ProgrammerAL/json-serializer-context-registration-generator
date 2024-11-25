@@ -17,16 +17,19 @@ public static class SourceGenerationHelper
             .ToList();
 
         usingNamespaces.Add("System.Text.Json.Serialization");
-        if (!string.IsNullOrWhiteSpace(jsonSourceGenerationInfo.FullNamespace))
-        {
-            usingNamespaces.Add(jsonSourceGenerationInfo.FullNamespace);
-        }
 
-        var distinctUsingNamespaces = usingNamespaces.Distinct();
+        var distinctUsingNamespaces = usingNamespaces.Distinct().ToList();
+
+        //This will be in the namespace of the generated class, so don't add it to the usings
+        distinctUsingNamespaces.Remove(jsonSourceGenerationInfo.FullNamespace);
+
         foreach (var usingNamespace in distinctUsingNamespaces)
         {
             builder.AppendLine($"using {usingNamespace};");
         }
+
+        builder.AppendLine($"");
+        builder.AppendLine($"namespace {jsonSourceGenerationInfo.FullNamespace};");
 
         builder.AppendLine($"");
 
@@ -36,7 +39,6 @@ public static class SourceGenerationHelper
         {
             builder.AppendLine($"[JsonSerializable(typeof({reistrationClassName}))]");
         }
-
 
         builder.AppendLine($"[{jsonSourceGenerationInfo.JsonSourceGenerationOptionsAttribute}]");
         builder.AppendLine($"{jsonSourceGenerationInfo.AccessModifier} partial class {jsonSourceGenerationInfo.ClassName} : JsonSerializerContext");

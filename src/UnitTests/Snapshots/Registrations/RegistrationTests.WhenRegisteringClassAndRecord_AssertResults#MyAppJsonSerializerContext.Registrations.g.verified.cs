@@ -1,6 +1,7 @@
 ﻿//HintName: MyAppJsonSerializerContext.Registrations.g.cs
-using ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 using System.Text.Json.Serialization;
+
+namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
 [JsonSerializable(typeof(MyClass))]
 [JsonSerializable(typeof(MyRecord))]
