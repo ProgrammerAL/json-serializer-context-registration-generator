@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" PrivateAssets="all" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
   <!-- Reference the attributes from the generator to compile against them -->
   <!-- Ensure we specify PrivateAssets so the NuGet doesn't have any dependencies -->

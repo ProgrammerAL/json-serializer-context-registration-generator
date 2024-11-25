@@ -7,6 +7,7 @@ using Microsoft.CodeAnalysis.Text;
 using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
 using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.GeneratorParsers;
 using System.Collections.Immutable;
+using System.Diagnostics;
 
 namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
 
@@ -41,6 +42,7 @@ public class JsonSerializerContextRegistrationGenerator : IIncrementalGenerator
 
     private static void GenerateCode((ImmutableArray<GenerateInfoBase?> Left, ImmutableArray<GenerateInfoBase?> Right) sources, SourceProductionContext context)
     {
+        //_ = Debugger.Launch();
         var infos = sources.Left.Concat(sources.Right);
 
         var groups = infos.Where(x => x is not null).GroupBy(x => x!.Key);
