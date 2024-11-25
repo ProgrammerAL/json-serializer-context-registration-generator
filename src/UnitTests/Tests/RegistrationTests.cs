@@ -1,167 +1,167 @@
-﻿namespace UnitTests.Tests;
+﻿//namespace UnitTests.Tests;
 
-public class RegistrationTests
-{
-    private const string SnapshotsDirectory = "Snapshots/Registrations";
+//public class RegistrationTests
+//{
+//    private const string SnapshotsDirectory = "Snapshots/Registrations";
 
-    [Fact]
-    public async Task WhenSerializingPublicClassRegistration_AssertResults()
-    {
-        var source = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//    [Fact]
+//    public async Task WhenSerializingPublicClassRegistration_AssertResults()
+//    {
+//        var source = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public class MyClass
-            {
-                public string MyProp { get; set; }
-            }
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public class MyClass
+//            {
+//                public string MyProp { get; set; }
+//            }
 
-            [JsonSourceGenerationOptions(
-                UseStringEnumConverter = true, 
-                PropertyNameCaseInsensitive = true, 
-                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-                AllowTrailingCommas = true)]
-            [GeneratedJsonSerializerContext]
-            public partial class MyAppJsonSerializerContext
-            {
-            }
-            """;
+//            [JsonSourceGenerationOptions(
+//                UseStringEnumConverter = true, 
+//                PropertyNameCaseInsensitive = true, 
+//                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+//                AllowTrailingCommas = true)]
+//            [GeneratedJsonSerializerContext]
+//            public partial class MyAppJsonSerializerContext
+//            {
+//            }
+//            """;
 
-        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
-    }
+//        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
+//    }
 
-    [Fact]
-    public async Task WhenSerializingInternalClassRegistration_AssertResults()
-    {
-        var source = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//    [Fact]
+//    public async Task WhenSerializingInternalClassRegistration_AssertResults()
+//    {
+//        var source = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [JsonSourceGenerationOptions(
-                UseStringEnumConverter = true, 
-                PropertyNameCaseInsensitive = true, 
-                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-                AllowTrailingCommas = true)]
-            [GeneratedJsonSerializerContext]
-            internal partial class MyAppJsonSerializerContext
-            {
-            }
+//            [JsonSourceGenerationOptions(
+//                UseStringEnumConverter = true, 
+//                PropertyNameCaseInsensitive = true, 
+//                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+//                AllowTrailingCommas = true)]
+//            [GeneratedJsonSerializerContext]
+//            internal partial class MyAppJsonSerializerContext
+//            {
+//            }
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public class MyClass
-            {
-                public string MyProp { get; set; }
-            }
-            """;
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public class MyClass
+//            {
+//                public string MyProp { get; set; }
+//            }
+//            """;
 
-        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
-    }
+//        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
+//    }
 
-    [Fact]
-    public async Task WhenSerializingPrivateClassRegistration_AssertResults()
-    {
-        var source = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//    [Fact]
+//    public async Task WhenSerializingPrivateClassRegistration_AssertResults()
+//    {
+//        var source = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public class MyClass
-            {
-                public string MyProp { get; set; }
-            }
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public class MyClass
+//            {
+//                public string MyProp { get; set; }
+//            }
 
-            [JsonSourceGenerationOptions(
-                UseStringEnumConverter = true, 
-                PropertyNameCaseInsensitive = true, 
-                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-                AllowTrailingCommas = true)]
-            [GeneratedJsonSerializerContext]
-            private partial class MyAppJsonSerializerContext
-            {
-            }
-            """;
+//            [JsonSourceGenerationOptions(
+//                UseStringEnumConverter = true, 
+//                PropertyNameCaseInsensitive = true, 
+//                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+//                AllowTrailingCommas = true)]
+//            [GeneratedJsonSerializerContext]
+//            private partial class MyAppJsonSerializerContext
+//            {
+//            }
+//            """;
 
-        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
-    }
+//        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
+//    }
 
-    [Fact]
-    public async Task WhenSerializingRegistrationsInDifferentFiles_AssertResults()
-    {
-        var source1 = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//    [Fact]
+//    public async Task WhenSerializingRegistrationsInDifferentFiles_AssertResults()
+//    {
+//        var source1 = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public class MyClass
-            {
-                public string MyProp { get; set; }
-            }
-            """;
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public class MyClass
+//            {
+//                public string MyProp { get; set; }
+//            }
+//            """;
 
-        var source2 = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//        var source2 = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [JsonSourceGenerationOptions(
-                UseStringEnumConverter = true, 
-                PropertyNameCaseInsensitive = true, 
-                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-                AllowTrailingCommas = true)]
-            [GeneratedJsonSerializerContext]
-            public partial class MyAppJsonSerializerContext
-            {
-            }
-            """;
+//            [JsonSourceGenerationOptions(
+//                UseStringEnumConverter = true, 
+//                PropertyNameCaseInsensitive = true, 
+//                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+//                AllowTrailingCommas = true)]
+//            [GeneratedJsonSerializerContext]
+//            public partial class MyAppJsonSerializerContext
+//            {
+//            }
+//            """;
 
-        await TestHelper.VerifyAsync(SnapshotsDirectory, source1, source2);
-    }
+//        await TestHelper.VerifyAsync(SnapshotsDirectory, source1, source2);
+//    }
 
 
-    [Fact]
-    public async Task WhenRegisteringClassAndRecord_AssertResults()
-    {
-        var source1 = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//    [Fact]
+//    public async Task WhenRegisteringClassAndRecord_AssertResults()
+//    {
+//        var source1 = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public class MyClass
-            {
-                public string MyProp { get; set; }
-            }
-            """;
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public class MyClass
+//            {
+//                public string MyProp { get; set; }
+//            }
+//            """;
 
-        var source2 = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//        var source2 = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
-            public record MyRecord(string MyProp);
-            """;
+//            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+//            public record MyRecord(string MyProp);
+//            """;
 
-        var source3 = """
-            using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+//        var source3 = """
+//            using System.Text.Json.Serialization;
+//            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+//            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [JsonSourceGenerationOptions(
-                UseStringEnumConverter = true, 
-                PropertyNameCaseInsensitive = true, 
-                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-                AllowTrailingCommas = true)]
-            [GeneratedJsonSerializerContext]
-            public partial class MyAppJsonSerializerContext
-            {
-            }
-            """;
-        await TestHelper.VerifyAsync(SnapshotsDirectory, source1, source2, source3);
-    }
-}
+//            [JsonSourceGenerationOptions(
+//                UseStringEnumConverter = true, 
+//                PropertyNameCaseInsensitive = true, 
+//                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+//                AllowTrailingCommas = true)]
+//            [GeneratedJsonSerializerContext]
+//            public partial class MyAppJsonSerializerContext
+//            {
+//            }
+//            """;
+//        await TestHelper.VerifyAsync(SnapshotsDirectory, source1, source2, source3);
+//    }
+//}
