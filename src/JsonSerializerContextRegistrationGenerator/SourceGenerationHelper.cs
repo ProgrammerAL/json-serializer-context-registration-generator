@@ -40,7 +40,8 @@ public static class SourceGenerationHelper
             builder.AppendLine($"[JsonSerializable(typeof({reistrationClassName}))]");
         }
 
-        builder.AppendLine($"[{jsonSourceGenerationInfo.JsonSourceGenerationOptionsAttribute}]");
+        //builder.AppendLine($"[{jsonSourceGenerationInfo.JsonSourceGenerationOptionsAttribute}]");
+        builder.AppendLine($"[System.Text.Json.Serialization.JsonSourceGenerationOptionsAttribute(UseStringEnumConverter = true, PropertyNameCaseInsensitive = true, PropertyNamingPolicy = System.Text.Json.Serialization.JsonKnownNamingPolicy.CamelCase, AllowTrailingCommas = true)]");
         //builder.AppendLine($"{jsonSourceGenerationInfo.AccessModifier} partial class {jsonSourceGenerationInfo.ClassName} : JsonSerializerContext");
         builder.AppendLine($"{jsonSourceGenerationInfo.AccessModifier} partial class MyGeneratedJsonSerializerContext : JsonSerializerContext");
         builder.AppendLine("{");
