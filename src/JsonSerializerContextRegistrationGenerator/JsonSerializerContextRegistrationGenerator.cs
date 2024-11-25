@@ -15,31 +15,50 @@ public class JsonSerializerContextRegistrationGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        var toGenerate =
+        var toGenerateRegistrations =
             context.SyntaxProvider
             .ForAttributeWithMetadataName(
                 RegisterJsonSerializationAttribute.Constants.AttributeFullName,
-                predicate: static (node, _) => node is ClassDeclarationSyntax or RecordDeclarationSyntax,
+                predicate: static (node, _) => node is ClassDeclarationSyntax,
                 transform: ClassParser.GetRegistrationToGenerate);
 
-        var collectedClasses = toGenerate.Collect();
+        var toGenerateJsonContext =
+            context.SyntaxProvider
+            .ForAttributeWithMetadataName(
+                GeneratedJsonSerializerContextAttribute.Constants.AttributeFullName,
+                predicate: static (node, _) => node is ClassDeclarationSyntax,
+                transform: ClassParser.GetRegistrationToGenerate);
+
+        var toGenerateRegistrationsCollected = toGenerateRegistrations.Collect();
+        var toGenerateJsonContextCollected = toGenerateJsonContext.Collect();
+
+        var combined = toGenerateRegistrationsCollected.Combine(toGenerateJsonContextCollected);
 
         // Generate single source code for all classes to add to json serialization
-        context.RegisterSourceOutput(collectedClasses,
+        context.RegisterSourceOutput(combined,
             static (spc, sources) => GenerateCode(sources, spc));
     }
 
-    private static void GenerateCode(ImmutableArray<GenerateInfoBase?> infos, SourceProductionContext context)
+    private static void GenerateCode((ImmutableArray<GenerateInfoBase?> Left, ImmutableArray<GenerateInfoBase?> Right) sources, SourceProductionContext context)
     {
-        if (infos.Length == 0)
+        var infos = sources.Left.Concat(sources.Right);
+
+        var groups = infos.Where(x => x is not null).GroupBy(x => x!.Key);
+
+        foreach (var group in groups)
         {
-            return;
+            var jsonSourceGenerationInfo = group.FirstOrDefault(x => x is JsonSourceGenerationInfo) as JsonSourceGenerationInfo;
+
+            if (jsonSourceGenerationInfo is null)
+            {
+                continue;
+            }
+
+            var registrations = group.OfType<RegistrationToGenerateInfo>().ToImmutableArray();
+
+            var codeString = SourceGenerationHelper.GenerateSource(jsonSourceGenerationInfo, registrations);
+            var sourceText = SourceText.From(codeString, Encoding.UTF8);
+            context.AddSource($"{jsonSourceGenerationInfo.ClassName}.Registrations.g.cs", sourceText);
         }
-
-        infos.GroupBy()
-
-        //var codeString = SourceGenerationHelper.GenerateSource(in infos);
-        //var sourceText = SourceText.From(codeString, Encoding.UTF8);
-        //context.AddSource($"{info.SerializerContext.ClassName}.{info.Registration.ClassName}.Registration.g.cs", sourceText);
     }
 }

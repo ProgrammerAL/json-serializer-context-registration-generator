@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
 using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
 using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+using System.Text.Json.Serialization;
 
 namespace UnitTests;
 
@@ -26,6 +27,7 @@ public static class TestHelper
                 MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(JsonSerializerContextRegistrationGenerator).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(RegisterJsonSerializationAttribute).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(JsonSourceGenerationOptionsAttribute).Assembly.Location),
             });
 
         CSharpCompilation compilation = CSharpCompilation.Create(
