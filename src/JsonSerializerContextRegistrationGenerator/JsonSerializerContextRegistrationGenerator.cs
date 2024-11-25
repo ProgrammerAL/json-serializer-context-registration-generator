@@ -15,24 +15,24 @@ public class JsonSerializerContextRegistrationGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        var toGenerateRegistrations =
+        var registrations =
             context.SyntaxProvider
             .ForAttributeWithMetadataName(
                 RegisterJsonSerializationAttribute.Constants.AttributeFullName,
-                predicate: static (node, _) => node is ClassDeclarationSyntax,
+                predicate: static (node, _) => node is ClassDeclarationSyntax or RecordDeclarationSyntax,
                 transform: ClassParser.GetRegistrationToGenerate);
 
-        var toGenerateJsonContext =
+        var jsonContexts =
             context.SyntaxProvider
             .ForAttributeWithMetadataName(
                 GeneratedJsonSerializerContextAttribute.Constants.AttributeFullName,
                 predicate: static (node, _) => node is ClassDeclarationSyntax,
                 transform: ClassParser.GetRegistrationToGenerate);
 
-        var toGenerateRegistrationsCollected = toGenerateRegistrations.Collect();
-        var toGenerateJsonContextCollected = toGenerateJsonContext.Collect();
+        var registrationsCollected = registrations.Collect();
+        var jsonContextsCollected = jsonContexts.Collect();
 
-        var combined = toGenerateRegistrationsCollected.Combine(toGenerateJsonContextCollected);
+        var combined = registrationsCollected.Combine(jsonContextsCollected);
 
         // Generate single source code for all classes to add to json serialization
         context.RegisterSourceOutput(combined,

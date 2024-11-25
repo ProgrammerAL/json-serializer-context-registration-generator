@@ -14,9 +14,10 @@ namespace UnitTests;
 
 public static class TestHelper
 {
-    public static async Task VerifyAsync(string source, string directory)
+    public static async Task VerifyAsync(string directory, params string[] sources)
     {
-        SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(source);
+        var syntaxTrees = sources.Select(source => CSharpSyntaxTree.ParseText(source)).ToArray();
+
         // Create references for assemblies we require
         // We could add multiple references if required
         var references = AppDomain.CurrentDomain.GetAssemblies()
@@ -32,7 +33,7 @@ public static class TestHelper
 
         CSharpCompilation compilation = CSharpCompilation.Create(
             assemblyName: "Tests",
-            syntaxTrees: new[] { syntaxTree },
+            syntaxTrees: syntaxTrees,
             references: references,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
