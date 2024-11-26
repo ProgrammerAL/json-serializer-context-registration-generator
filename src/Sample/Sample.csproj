@@ -19,4 +19,12 @@
     <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Generated\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="pwsh ./run-json-serializer-registration-code-generation.ps1" />
+  </Target>
+
 </Project>

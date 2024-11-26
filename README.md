@@ -29,7 +29,7 @@ This project fixes the problem by letting you spread out the
 
 ## How to use this in your own code
 
-There are 2 steps you must complete. Step 1 is add some code to opt-in to what code will be gereated by this project. Step 2 is to setup your project to run this project to generate the code.
+There are 2 steps you must complete. Step 1 is add some code to opt-in to what code will be gereated by this project. Step 2 is to setup your project to run this project to generate the code. The project in the `~/src/Sample` directory has a fully setup ASP.NET Core project using this project.
 
 ### Setup Your Code
 
@@ -66,11 +66,36 @@ public record RootCheckEndpointResponse(string UtcTime);
 
 ### Run This Project
 
+Now that your code has opted in to code generation, you need to run the .NET Tool `JsonSerializerContextRegistrationGenerator.Runner` to generate the code files.
 
+You can manually run the tool by following these steps.
+
+1. Install the .NET tool using `dotnet tool install --global JsonSerializerContextRegistrationGenerator.Runner --version 0.0.1-preview.33`
+1. Run the .NET Tool
+
+Additionally you can automate these steps and make them run each time the project is built. You can create a script that will install/update the .NET tool, and then run it. The below code snippets show how to enable this. You need a PowerShell script that will install/update/run the .NET tool, and the second snippet goes inside the csproj file to run the PowerShell script before the build starts. A full example of this is in the `~/src/Sample` directory.
+
+PowerShell Script to install/update/run the .NET Tool. Assume this is stored as a local script called `run-json-serializer-registration-code-generation.ps1`:
+```console
+#Make sure a known version of the .NET Tool is installed
+& "dotnet" tool install --global JsonSerializerContextRegistrationGenerator.Runner --version 0.0.1-preview.33
+
+#Make sure we're using the latest version
+& "dotnet" tool update --global ProgrammerAL.Tools.CodeUpdater
+
+& "json-serializer-context-registrations-code-generator" --sources "$PSScriptRoot" --output "$PSScriptRoot/Generated"
+```
+
+Running the PowerShell script during the build:
+```xml
+<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+  <Exec Command="pwsh ./run-json-serializer-registration-code-generation.ps1" />
+</Target>
+```
 
 ## Why Generate Files? Why not use a Source Generator?
 
-Source Generators are great, I love them. But 
+Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before 
 
 
 ## CLI Options
