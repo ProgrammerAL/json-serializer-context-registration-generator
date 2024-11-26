@@ -40,7 +40,7 @@ public class BuildContext : FrostingContext
         NugetVersion = LoadParameter(context, "nugetVersion");
         NuGetPushToken = LoadParameter(context, "nuGetPushToken");
         PushNuget = context.Argument<bool>("pushNuget", false);
-        
+
         ProjectPaths = ProjectPaths.LoadFromContext(context, BuildConfiguration, SrcDirectoryPath, NugetVersion);
     }
 
@@ -72,7 +72,8 @@ public sealed class BuildTask : FrostingTask<BuildContext>
 
         BuildDotnetApp(context, context.ProjectPaths.PathToSln);
         TestDotnetApp(context, context.ProjectPaths.UnitTestProj);
-        PackNugetPackage(context, context.ProjectPaths.OutDir, context.ProjectPaths.CsprojFile);
+        PackNugetPackage(context, context.ProjectPaths.OutDir, context.ProjectPaths.AttributesCsprojFile);
+        PackNugetPackage(context, context.ProjectPaths.OutDir, context.ProjectPaths.RunnerCsprojFile);
     }
 
     private void BuildDotnetApp(BuildContext context, string pathToSln)
@@ -123,7 +124,7 @@ public sealed class NugetPushTask : FrostingTask<BuildContext>
         }
 
         context.DotNetNuGetPush(context.ProjectPaths.NuGetFilePath, new Cake.Common.Tools.DotNet.NuGet.Push.DotNetNuGetPushSettings
-        { 
+        {
             Source = "https://api.nuget.org/v3/index.json",
             ApiKey = context.NuGetPushToken
         });

@@ -5,17 +5,34 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner</RootNamespace>
     <AssemblyName>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner</AssemblyName>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
-
+    <PropertyGroup>
+    <Version>0.0.1</Version>
+    <Title>Json Serializer Context Registrations Code Generator</Title>
+    <Authors>ProgrammerAL</Authors>
+    <Description>A .NET tool to generate code files registering classes to a JSON Serializer Context.</Description>
+    <PackageProjectUrl>https://github.com/ProgrammerAL/json-serializer-context-registration-generator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ProgrammerAL/json-serializer-context-registration-generator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>tool</PackageTags>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>json-serializer-context-registrations-code-generator</ToolCommandName>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
 
@@ -23,5 +40,12 @@
     <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator\JsonSerializerContextRegistrationGenerator.csproj" />
     <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" />
   </ItemGroup>
-
-</Project>
+    <PropertyGroup>
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--Include the ReadMe in the nuget package-->
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup></Project>

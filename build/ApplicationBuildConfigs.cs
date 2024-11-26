@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 public record ProjectPaths(
     string ProjectName,
     string PathToSln,
-    string ProjectFolder,
-    string CsprojFile,
+    string AttributesCsprojFile,
+    string RunnerCsprojFile,
     string UnitTestProj,
     string OutDir,
     string NuGetFilePath)
@@ -20,17 +20,17 @@ public record ProjectPaths(
     {
         var projectName = "JsonSerializerContextRegistrationGenerator";
         var pathToSln = srcDirectory + $"/{projectName}.sln";
-        var projectDir = srcDirectory + $"/{projectName}";
-        var csProjFile = projectDir + $"/{projectName}.csproj";
-        var unitTestsProj = srcDirectory + $"/UnitTests/UnitTests.csproj";
-        var outDir = projectDir + $"/bin/{buildConfiguration}/cake-build-output";
+        var attributesCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Attributes.csproj";
+        var runnerCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Runner.csproj";
+        var unitTestsProj =  $"{srcDirectory}/UnitTests/UnitTests.csproj";
+        var outDir = $"{srcDirectory}/cake-build-output";
         var nugetFilePath = outDir + $"/*{nugetVersion}.nupkg";
 
         return new ProjectPaths(
             projectName,
             pathToSln,
-            projectDir,
-            csProjFile,
+            attributesCsProjFile,
+            runnerCsProjFile,
             unitTestsProj,
             outDir,
             nugetFilePath);
