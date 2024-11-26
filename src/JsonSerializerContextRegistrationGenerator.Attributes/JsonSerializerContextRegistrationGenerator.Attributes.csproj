@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes</RootNamespace>
-    <AssemblyName>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes</AssemblyName>
+    <AssemblyName>JsonSerializerContextRegistrationGenerator.Attributes</AssemblyName>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
