@@ -20,8 +20,8 @@ public record ProjectPaths(
     {
         var projectName = "JsonSerializerContextRegistrationGenerator";
         var pathToSln = srcDirectory + $"/{projectName}.sln";
-        var attributesCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Attributes.csproj";
-        var runnerCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Runner.csproj";
+        var attributesCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Attributes/JsonSerializerContextRegistrationGenerator.Attributes.csproj";
+        var runnerCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Runner/JsonSerializerContextRegistrationGenerator.Runner.csproj";
         var unitTestsProj =  $"{srcDirectory}/UnitTests/UnitTests.csproj";
         var outDir = $"{srcDirectory}/cake-build-output";
         var nugetFilePath = outDir + $"/*{nugetVersion}.nupkg";
