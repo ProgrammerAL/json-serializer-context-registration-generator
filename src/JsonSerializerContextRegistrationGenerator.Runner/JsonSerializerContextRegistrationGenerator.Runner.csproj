@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner</RootNamespace>
-    <AssemblyName>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner</AssemblyName>
+    <AssemblyName>JsonSerializerContextRegistrationGenerator.Runner</AssemblyName>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
