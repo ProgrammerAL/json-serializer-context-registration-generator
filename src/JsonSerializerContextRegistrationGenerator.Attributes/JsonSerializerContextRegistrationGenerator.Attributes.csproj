@@ -11,8 +11,23 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
+    <Version>0.0.1</Version>
+    <Title>Json Serializer Context Registrations Code Generator Attributes</Title>
+    <Authors>ProgrammerAL</Authors>
+    <Description>Attributes for a .NET tool to generate code files registering classes to a JSON Serializer Context.</Description>
+    <PackageProjectUrl>https://github.com/ProgrammerAL/json-serializer-context-registration-generator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ProgrammerAL/json-serializer-context-registration-generator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <PropertyGroup>
     <NuGetAudit>true</NuGetAudit>
     <NuGetAuditMode>all</NuGetAuditMode>
     <NuGetAuditLevel>low</NuGetAuditLevel>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!--Include the ReadMe in the nuget package-->
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 </Project>
