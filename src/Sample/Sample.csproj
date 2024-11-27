@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
   </ItemGroup>
 
   <ItemGroup>

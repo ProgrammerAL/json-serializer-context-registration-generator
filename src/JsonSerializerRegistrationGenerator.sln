@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerContextRegistrationGenerator", "JsonSerializerContextRegistrationGenerator\JsonSerializerContextRegistrationGenerator.csproj", "{A4F930D7-0BB6-4782-808E-817CCFB30ECC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerRegistrationGenerator", "JsonSerializerRegistrationGenerator\JsonSerializerRegistrationGenerator.csproj", "{A4F930D7-0BB6-4782-808E-817CCFB30ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerContextRegistrationGenerator.Attributes", "JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj", "{4F345CED-9961-4509-90BE-214A546BCCA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerRegistrationGenerator.Attributes", "JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj", "{4F345CED-9961-4509-90BE-214A546BCCA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7A6BBACD-3614-4CD1-9290-63CEF03DCCCC}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{BA342D13-5E99-4394-AD4F-578FF0DE0952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerContextRegistrationGenerator.Runner", "JsonSerializerContextRegistrationGenerator.Runner\JsonSerializerContextRegistrationGenerator.Runner.csproj", "{537647B0-B63F-4CAF-829B-2A5747C927BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializerRegistrationGenerator.Runner", "JsonSerializerRegistrationGenerator.Runner\JsonSerializerRegistrationGenerator.Runner.csproj", "{537647B0-B63F-4CAF-829B-2A5747C927BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

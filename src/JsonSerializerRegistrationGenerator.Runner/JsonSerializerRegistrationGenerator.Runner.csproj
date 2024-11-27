@@ -37,8 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator\JsonSerializerContextRegistrationGenerator.csproj" />
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator\JsonSerializerRegistrationGenerator.csproj" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj" />
   </ItemGroup>
     <PropertyGroup>
     <NuGetAudit>true</NuGetAudit>

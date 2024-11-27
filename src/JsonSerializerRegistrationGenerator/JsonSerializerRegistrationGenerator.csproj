@@ -28,7 +28,7 @@
   <!-- Reference the attributes from the generator to compile against them -->
   <!-- Ensure we specify PrivateAssets so the NuGet doesn't have any dependencies -->
   <ItemGroup>
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <!-- Package the generator in the analyzer directory of the nuget package -->

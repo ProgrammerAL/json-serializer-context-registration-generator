@@ -32,8 +32,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator.Attributes\JsonSerializerContextRegistrationGenerator.Attributes.csproj" />
-    <ProjectReference Include="..\JsonSerializerContextRegistrationGenerator\JsonSerializerContextRegistrationGenerator.csproj" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj" />
+    <ProjectReference Include="..\JsonSerializerRegistrationGenerator\JsonSerializerRegistrationGenerator.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
