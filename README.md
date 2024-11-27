@@ -39,13 +39,13 @@ There are 2 steps you must complete. Step 1 is add some code to opt-in to what c
 
 1. In your C# project, add a NuGet reference to `ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes`
 1. Create a `JsonSerializerContext` class like the `JsonSerializerContext Example` below. It must follow the rules:
-  - Partial Class
-  - Inherits from `JsonSerializerContext`
-  - Add the `[JsonSourceGenerationOptions]` attribute
-  - Add the `[GeneratedJsonSerializerContext]` attribute
+    1. Partial Class
+    1. Inherits from `JsonSerializerContext`
+    1. Add the `[JsonSourceGenerationOptions]` attribute
+    1. Add the `[GeneratedJsonSerializerContext]` attribute
 1. For each class you want to register, add the `[RegisterJsonSerialization]` attribute to it like in the `Registration Example` below. It must follow the rules:
-  - Is a Class or a Record
-  - The type given to the constructor matches the `JsonSerializerContext` you created previously
+    1. Is a Class or a Record
+    1. The type given to the constructor matches the `JsonSerializerContext` you created previously
 1. Repeat the above steps for each JSON Serializer Context you want to create
 
 
@@ -70,11 +70,11 @@ public record WeatherForecastRequest(string UtcTime);
 
 ### Step 2: Run This Project
 
-Now that your code has opted in to code generation, you need to run the .NET Tool `JsonSerializerContextRegistrationGenerator.Runner` to generate the code files.
+Now that your code has opted in to code generation, you need to run the .NET Tool `ProgrammerAL.JsonSerializerRegistrationGenerator.Runner` to generate the code files.
 
 You can manually run the tool by following these steps.
 
-1. Install the .NET tool using `dotnet tool install --global JsonSerializerContextRegistrationGenerator.Runner --version 0.0.1-preview.33`
+1. Install the .NET tool using `dotnet tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 0.0.1-preview.36`
 1. Run the .NET Tool
 
 Additionally you can automate these steps and make them run each time the project is built. You can create a script that will install/update the .NET tool, and then run it. The below code snippets show how to enable this. You need a PowerShell script that will install/update/run the .NET tool, and the second snippet goes inside the csproj file to run the PowerShell script before the build starts. A full example of this is in the `~/src/Sample` directory.
