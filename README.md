@@ -80,14 +80,15 @@ You can manually run the tool by following these steps.
 Additionally you can automate these steps and make them run each time the project is built. You can create a script that will install/update the .NET tool, and then run it. The below code snippets show how to enable this. You need a PowerShell script that will install/update/run the .NET tool, and the second snippet goes inside the csproj file to run the PowerShell script before the build starts. A full example of this is in the `~/src/Sample` directory.
 
 PowerShell Script to install/update/run the .NET Tool. Assume this is stored as a local script called `run-json-serializer-registration-code-generation.ps1`:
+
 ```console
 #Make sure a known version of the .NET Tool is installed
-& "dotnet" tool install --global JsonSerializerContextRegistrationGenerator.Runner --version 0.0.1-preview.33
+& "dotnet" tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 0.0.1-preview.38
 
 #Make sure we're using the latest version
-& "dotnet" tool update --global ProgrammerAL.Tools.CodeUpdater
+& "dotnet" tool update --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner
 
-& "json-serializer-context-registrations-code-generator" --sources "$PSScriptRoot" --output "$PSScriptRoot/Generated"
+& "json-serializer-context-registrations-code-generator" --sources "$PSScriptRoot" --output "$PSScriptRoot/GeneratedCode/JsonSerializerContexRegistrations"
 ```
 
 Running the PowerShell script during the build:
@@ -106,7 +107,6 @@ Now that the code has been updated, and the generator has been automated. Compil
 Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before 
 
 Internally this project uses a source generator to create the code. It then outputs the generated code to a file.
-
 
 ## CLI Options
 

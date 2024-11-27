@@ -40,7 +40,7 @@ public class RegistrationTests
             using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext), "string", "int")]
             public class MyClass<T>
             {
                 public T MyProp { get; set; }
@@ -60,6 +60,34 @@ public class RegistrationTests
         await TestHelper.VerifyAsync(SnapshotsDirectory, source);
     }
 
+    [Fact]
+    public async Task WhenSerializingMultipleGenericsClassRegistration_AssertResults()
+    {
+        var source = """
+            using System.Text.Json.Serialization;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
+            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext), "string, string", "int, string")]
+            public class MyClass<T, U>
+            {
+                public T MyProp1 { get; set; }
+                public U MyProp2 { get; set; }
+            }
+
+            [JsonSourceGenerationOptions(
+                UseStringEnumConverter = true, 
+                PropertyNameCaseInsensitive = true, 
+                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+                AllowTrailingCommas = true)]
+            [GeneratedJsonSerializerContext]
+            public partial class MyAppJsonSerializerContext: JsonSerializerContext
+            {
+            }
+            """;
+
+        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
+    }
     [Fact]
     public async Task WhenSerializingInternalClassRegistration_AssertResults()
     {

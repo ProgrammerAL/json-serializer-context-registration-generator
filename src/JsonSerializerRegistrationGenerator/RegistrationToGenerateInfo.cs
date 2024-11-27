@@ -16,14 +16,19 @@ public record RegistrationToGenerateInfo(
     ImmutableArray<string> GenericTypeParameters,
     string Key) : GenerateInfoBase(Key)
 {
-    public string DetermineFullClassName()
+    public IEnumerable<string> DetermineClassNames()
     {
         if (GenericTypeParameters.Any())
         {
-            return $"{ClassName}<{string.Join(", ", GenericTypeParameters)}>";
+            foreach (var parameter in GenericTypeParameters)
+            {
+                yield return $"{ClassName}<{parameter}>";
+            }
         }
-
-        return ClassName;
+        else
+        {
+            yield return ClassName;
+        }
     }
 }
 

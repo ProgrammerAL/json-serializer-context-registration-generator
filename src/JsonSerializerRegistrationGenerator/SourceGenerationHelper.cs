@@ -43,14 +43,13 @@ public static class SourceGenerationHelper
 
         builder.AppendLine($"");
 
-        var registrationClassNames = registrationInfos.Select(x => x.DetermineFullClassName()).OrderBy(x => x);
+        var registrationClassNames = registrationInfos.SelectMany(x => x.DetermineClassNames()).OrderBy(x => x);
 
         foreach (var registrationClassName in registrationClassNames)
         {
             builder.AppendLine($"[JsonSerializable(typeof({registrationClassName}))]");
         }
 
-        //builder.AppendLine($"[{jsonSourceGenerationInfo.JsonSourceGenerationOptionsAttribute}]");
         builder.AppendLine($"{jsonSourceGenerationInfo.AccessModifier} partial class {jsonSourceGenerationInfo.ClassName} : JsonSerializerContext");
         builder.AppendLine("{");
         builder.AppendLine("}");

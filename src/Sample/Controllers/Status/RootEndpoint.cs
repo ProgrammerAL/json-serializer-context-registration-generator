@@ -20,7 +20,3 @@ public class RootCheckEndpoint
 
 [RegisterJsonSerialization(typeof(AppJsonSerializerContext))]
 public record RootCheckEndpointResponse(string UtcTime);
-
-
-//[RegisterJsonSerialization(typeof(AppJsonSerializerContext))]
-//public record GenericResponse<T>(T ResponseValue);

@@ -12,8 +12,8 @@ using System.Text.Json.Serialization;
 
 namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
-[JsonSerializable(typeof(MyClass<int>))]
-[JsonSerializable(typeof(MyClass<string>))]
+[JsonSerializable(typeof(MyClass<int, string>))]
+[JsonSerializable(typeof(MyClass<string, string>))]
 public partial class MyAppJsonSerializerContext : JsonSerializerContext
 {
 }

@@ -56,15 +56,22 @@ public static class ClassParser
 
     private static RegistrationToGenerateInfo? ExtractRegistrationToGenerateInfo(INamedTypeSymbol symbol, AttributeData attributeData)
     {
-        var constructorArgs = attributeData.ConstructorArguments;
-        if (constructorArgs.Length != 1)
-        {
-            // Can't generate anything if the attribute isn't used correctly
-            // Note: Is there a way to surface this to users?
-            return null;
-        }
+        INamedTypeSymbol? jsonSerializerContextType = null;
+        var genericTypes = ImmutableArray<string>.Empty;
 
-        var jsonSerializerContextType = constructorArgs[0].Value as INamedTypeSymbol;
+        var constructorArgs = attributeData.ConstructorArguments;
+        if (constructorArgs.Length == 1)
+        {
+            jsonSerializerContextType = constructorArgs[0].Value as INamedTypeSymbol;
+        }
+        else if (constructorArgs.Length == 2)
+        {
+            jsonSerializerContextType = constructorArgs[0].Value as INamedTypeSymbol;
+            genericTypes = constructorArgs[1].Values.Select(x => x.Value?.ToString())
+                .Where(x => x is not null)
+                .Select(x => x!)
+                .ToImmutableArray();
+        }
 
         if (jsonSerializerContextType is null)
         {
@@ -73,20 +80,20 @@ public static class ClassParser
             return null;
         }
 
-        return TryExtractRegistrationToGenerateInfoSymbols(symbol, jsonSerializerContextType);
+        return TryExtractRegistrationToGenerateInfoSymbols(symbol, jsonSerializerContextType, genericTypes);
     }
 
     private static RegistrationToGenerateInfo? TryExtractRegistrationToGenerateInfoSymbols(
         INamedTypeSymbol symbol,
-        INamedTypeSymbol jsonSerializerContextType)
+        INamedTypeSymbol jsonSerializerContextType,
+        ImmutableArray<string> genericTypes)
     {
         var key = DetermineContextKey(jsonSerializerContextType);
 
         var symbolNamespace = DetermineNamespace(symbol);
         var symbolName = symbol.Name;
-        var genericTypeParameters = symbol.TypeParameters.Select(x => x.Name).ToImmutableArray();
 
-        return new RegistrationToGenerateInfo(symbolNamespace, symbolName, genericTypeParameters, key);
+        return new RegistrationToGenerateInfo(symbolNamespace, symbolName, genericTypes, key);
     }
 
     private static JsonSourceGenerationInfo? TryExtractJsonSourceGenerationInfoSymbols(
@@ -108,7 +115,7 @@ public static class ClassParser
         };
 
         return new JsonSourceGenerationInfo(contextNamespace, accessibility, className, key);
-    }    
+    }
 
     private static string DetermineContextKey(INamedTypeSymbol jsonSerializerContextType)
     {
