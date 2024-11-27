@@ -9,7 +9,7 @@ public class RegistrationTests
     {
         var source = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
@@ -37,7 +37,7 @@ public class RegistrationTests
     {
         var source = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [JsonSourceGenerationOptions(
@@ -65,7 +65,7 @@ public class RegistrationTests
     {
         var source = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
@@ -93,7 +93,7 @@ public class RegistrationTests
     {
         var source1 = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
@@ -105,7 +105,7 @@ public class RegistrationTests
 
         var source2 = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [JsonSourceGenerationOptions(
@@ -128,7 +128,7 @@ public class RegistrationTests
     {
         var source1 = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
@@ -140,7 +140,7 @@ public class RegistrationTests
 
         var source2 = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
@@ -149,7 +149,7 @@ public class RegistrationTests
 
         var source3 = """
             using System.Text.Json.Serialization;
-            using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
             namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
 
             [JsonSourceGenerationOptions(

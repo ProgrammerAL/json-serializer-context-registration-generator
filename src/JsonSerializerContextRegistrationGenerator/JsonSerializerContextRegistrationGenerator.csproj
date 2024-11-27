@@ -8,8 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Nullable>enable</Nullable>
-    <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator</RootNamespace>
-    <AssemblyName>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator</AssemblyName>
+    <RootNamespace>ProgrammerAL.JsonSerializerRegistrationGenerator</RootNamespace>
+    <AssemblyName>ProgrammerAL.JsonSerializerRegistrationGenerator</AssemblyName>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -34,9 +34,9 @@
     <!-- Package the generator in the analyzer directory of the nuget package -->
     <None Include="$(OutputPath)/$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <!-- Pack the attributes dll in the analyzers/dotnet/cs path so the source generator can use it -->
-    <None Include="$(OutputPath)/ProgrammerAl.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(OutputPath)/ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <!-- Pack the attributes dll in the lib\netstandard2.0 path so the library consuming this nuget can use it -->
-    <None Include="$(OutputPath)/ProgrammerAl.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="true" />
+    <None Include="$(OutputPath)/ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="true" />
     <None Include="../../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
   <PropertyGroup>

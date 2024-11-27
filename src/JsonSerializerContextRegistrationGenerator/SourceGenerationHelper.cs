@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator;
 
 public static class SourceGenerationHelper
 {

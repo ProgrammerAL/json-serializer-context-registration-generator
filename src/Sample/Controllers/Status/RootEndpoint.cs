@@ -1,7 +1,7 @@
 using System.Net;
 using System.Threading.Tasks;
 
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
 
 namespace Sample.Controllers.Status;
 
@@ -20,3 +20,4 @@ public class RootCheckEndpoint
 
 [RegisterJsonSerialization(typeof(AppJsonSerializerContext))]
 public record RootCheckEndpointResponse(string UtcTime);
+

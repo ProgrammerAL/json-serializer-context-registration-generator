@@ -6,9 +6,9 @@ using System.Text;
 
 using Microsoft.CodeAnalysis;
 
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.GeneratorParsers;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator.GeneratorParsers;
 
 public static class ClassParser
 {

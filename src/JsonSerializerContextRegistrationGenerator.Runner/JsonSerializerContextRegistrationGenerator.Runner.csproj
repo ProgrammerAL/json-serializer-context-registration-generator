@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner</RootNamespace>
-    <AssemblyName>JsonSerializerContextRegistrationGenerator.Runner</AssemblyName>
+    <RootNamespace>ProgrammerAL.JsonSerializerRegistrationGenerator.Runner</RootNamespace>
+    <AssemblyName>ProgrammerAL.JsonSerializerRegistrationGenerator.Runner</AssemblyName>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>

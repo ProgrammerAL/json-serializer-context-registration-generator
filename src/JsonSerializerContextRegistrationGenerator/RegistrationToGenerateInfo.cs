@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator;
 
 public abstract record GenerateInfoBase(string Key);
 public record JsonSourceGenerationInfo(

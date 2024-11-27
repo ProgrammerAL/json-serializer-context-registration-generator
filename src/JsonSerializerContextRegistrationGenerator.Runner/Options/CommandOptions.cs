@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner.Options;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator.Runner.Options;
 public class CommandOptions
 {
     [Option(shortName: 's', longName: "sources", Required = true, HelpText = "Path to the root directory of a set of code files")]

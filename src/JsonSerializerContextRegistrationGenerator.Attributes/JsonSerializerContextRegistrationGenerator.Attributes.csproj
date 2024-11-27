@@ -4,8 +4,8 @@
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes</RootNamespace>
-    <AssemblyName>JsonSerializerContextRegistrationGenerator.Attributes</AssemblyName>
+    <RootNamespace>ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes</RootNamespace>
+    <AssemblyName>ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes</AssemblyName>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

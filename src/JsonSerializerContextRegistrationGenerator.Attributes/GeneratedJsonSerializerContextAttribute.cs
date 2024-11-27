@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
 public class GeneratedJsonSerializerContextAttribute : Attribute

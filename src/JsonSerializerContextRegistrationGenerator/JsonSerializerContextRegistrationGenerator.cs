@@ -4,12 +4,12 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.GeneratorParsers;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.GeneratorParsers;
 using System.Collections.Immutable;
 using System.Diagnostics;
 
-namespace ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
+namespace ProgrammerAL.JsonSerializerRegistrationGenerator;
 
 [Generator]
 public class JsonSerializerContextRegistrationGenerator : IIncrementalGenerator

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
 using System.Text.Json.Serialization;
 
 namespace UnitTests;

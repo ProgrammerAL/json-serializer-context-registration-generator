@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
 
 namespace Sample;
 

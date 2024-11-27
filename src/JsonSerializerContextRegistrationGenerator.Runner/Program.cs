@@ -3,9 +3,9 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Attributes;
-using ProgrammerAL.SourceGenerators.JsonSerializerContextRegistrationGenerator.Runner.Options;
+using ProgrammerAL.JsonSerializerRegistrationGenerator;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
+using ProgrammerAL.JsonSerializerRegistrationGenerator.Runner.Options;
 
 using System.Collections.Immutable;
 using System.Text.Json.Serialization;
