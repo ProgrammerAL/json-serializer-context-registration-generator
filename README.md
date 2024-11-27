@@ -105,6 +105,8 @@ Now that the code has been updated, and the generator has been automated. Compil
 
 Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before 
 
+Internally this project uses a source generator to create the code. It then outputs the generated code to a file.
+
 
 ## CLI Options
 

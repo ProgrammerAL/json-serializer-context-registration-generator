@@ -16,11 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonSerializerRegistrationGenerator.Attributes\JsonSerializerRegistrationGenerator.Attributes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <Folder Include="Generated\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Generated\" />
+    <PackageReference Include="ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes" Version="0.0.1-preview.36" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

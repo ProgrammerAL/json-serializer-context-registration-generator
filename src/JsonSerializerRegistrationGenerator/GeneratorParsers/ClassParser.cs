@@ -84,8 +84,9 @@ public static class ClassParser
 
         var symbolNamespace = DetermineNamespace(symbol);
         var symbolName = symbol.Name;
+        var genericTypeParameters = symbol.TypeParameters.Select(x => x.Name).ToImmutableArray();
 
-        return new RegistrationToGenerateInfo(symbolNamespace, symbolName, key);
+        return new RegistrationToGenerateInfo(symbolNamespace, symbolName, genericTypeParameters, key);
     }
 
     private static JsonSourceGenerationInfo? TryExtractJsonSourceGenerationInfoSymbols(

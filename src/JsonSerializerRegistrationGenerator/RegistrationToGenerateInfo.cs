@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Immutable;
+using System.Text;
 
 namespace ProgrammerAL.JsonSerializerRegistrationGenerator;
 
@@ -10,7 +11,19 @@ public record JsonSourceGenerationInfo(
     string Key) : GenerateInfoBase(Key);
 
 public record RegistrationToGenerateInfo(
-    string FullNamespace, 
+    string FullNamespace,
     string ClassName,
-    string Key) : GenerateInfoBase(Key);
+    ImmutableArray<string> GenericTypeParameters,
+    string Key) : GenerateInfoBase(Key)
+{
+    public string DetermineFullClassName()
+    {
+        if (GenericTypeParameters.Any())
+        {
+            return $"{ClassName}<{string.Join(", ", GenericTypeParameters)}>";
+        }
+
+        return ClassName;
+    }
+}
 

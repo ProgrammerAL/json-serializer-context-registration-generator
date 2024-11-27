@@ -33,6 +33,34 @@ public class RegistrationTests
     }
 
     [Fact]
+    public async Task WhenSerializingGenericClassRegistration_AssertResults()
+    {
+        var source = """
+            using System.Text.Json.Serialization;
+            using ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes;
+            namespace ProgrammerAL.SourceGenerators.PublicInterfaceGenerator.UnitTestClasses;
+
+            [RegisterJsonSerialization(typeof(MyAppJsonSerializerContext))]
+            public class MyClass<T>
+            {
+                public T MyProp { get; set; }
+            }
+
+            [JsonSourceGenerationOptions(
+                UseStringEnumConverter = true, 
+                PropertyNameCaseInsensitive = true, 
+                PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+                AllowTrailingCommas = true)]
+            [GeneratedJsonSerializerContext]
+            public partial class MyAppJsonSerializerContext: JsonSerializerContext
+            {
+            }
+            """;
+
+        await TestHelper.VerifyAsync(SnapshotsDirectory, source);
+    }
+
+    [Fact]
     public async Task WhenSerializingInternalClassRegistration_AssertResults()
     {
         var source = """
