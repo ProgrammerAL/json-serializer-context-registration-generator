@@ -104,11 +104,19 @@ Now that the code has been updated, and the generator has been automated. Compil
 
 ## Why Generate Files? Why not use a Source Generator?
 
-Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before 
+Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before the built-in System.Text.Json generator. And unfortunatly, there's no way to do that. There's a ticket open on GitHub if you want to monitor it: https://github.com/dotnet/roslyn/issues/57239. If that ever happens, this project becomes just a single Source Generator. 
 
-Internally this project uses a source generator to create the code. It then outputs the generated code to a file.
+Internally this project uses a source generator to create the code. It then outputs the generated code to a file. As a developer, you commit the generated file to source control.
 
-## CLI Options
+## `json-serializer-context-registrations-code-generator` CLI Options
 
+The .NET Tool that generates the code files has 2 required CLI inputs. The are:
+
+-sources, -s
+  - Required
+  - Path to the root directory of a set of code files
+-output, -o
+  - Required
+  - Path to the directory to output files to
 
 
