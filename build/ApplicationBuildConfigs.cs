@@ -18,10 +18,10 @@ public record ProjectPaths(
 {
     public static ProjectPaths LoadFromContext(ICakeContext context, string buildConfiguration, string srcDirectory, string nugetVersion)
     {
-        var projectName = "JsonSerializerContextRegistrationGenerator";
+        var projectName = "JsonSerializerRegistrationGenerator";
         var pathToSln = srcDirectory + $"/{projectName}.sln";
-        var attributesCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Attributes/JsonSerializerContextRegistrationGenerator.Attributes.csproj";
-        var runnerCsProjFile = $"{srcDirectory}/JsonSerializerContextRegistrationGenerator.Runner/JsonSerializerContextRegistrationGenerator.Runner.csproj";
+        var attributesCsProjFile = $"{srcDirectory}/JsonSerializerRegistrationGenerator.Attributes/JsonSerializerRegistrationGenerator.Attributes.csproj";
+        var runnerCsProjFile = $"{srcDirectory}/JsonSerializerRegistrationGenerator.Runner/JsonSerializerRegistrationGenerator.Runner.csproj";
         var unitTestsProj =  $"{srcDirectory}/UnitTests/UnitTests.csproj";
         var outDir = $"{srcDirectory}/cake-build-output";
         var nugetFilePath = outDir + $"/*{nugetVersion}.nupkg";
