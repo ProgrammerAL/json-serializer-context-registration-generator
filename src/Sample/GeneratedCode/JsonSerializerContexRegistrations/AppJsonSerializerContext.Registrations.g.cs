@@ -12,6 +12,11 @@ using System.Text.Json.Serialization;
 
 namespace Sample;
 
+[JsonSerializable(typeof(GenericRootCheckEndpointResponse<int>))]
+[JsonSerializable(typeof(GenericRootCheckEndpointResponse<string>))]
+[JsonSerializable(typeof(GenericRootCheckEndpointResponse<System.DateTime>))]
+[JsonSerializable(typeof(MultipleGenericRootCheckEndpointResponse<int, DateTime>))]
+[JsonSerializable(typeof(MultipleGenericRootCheckEndpointResponse<string, int>))]
 [JsonSerializable(typeof(RootCheckEndpointResponse))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {

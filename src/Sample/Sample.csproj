@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes" Version="0.0.1-preview.36" />
+    <PackageReference Include="ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes" Version="0.0.1-preview.42" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

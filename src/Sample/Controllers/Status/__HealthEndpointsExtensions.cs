@@ -11,6 +11,8 @@ public static class HealthEndpointsExtensions
         var tags = new[] { "Status" };
 
         RootCheckEndpoint.RegisterApiEndpoint(rootGroup).WithTags(tags);
+        GenericRootCheckEndpoint.RegisterApiEndpoint(rootGroup).WithTags(tags);
+        MultipleGenericRootEndpoint.RegisterApiEndpoint(rootGroup).WithTags(tags);
 
         return app;
     }

@@ -1,12 +1,12 @@
 # JSON Serializer Context Registration Code Generator
 
-This project generated C# source code files to automatically add classes to a JsonSerializerContext class. It's additive to the built in System.Text.Json Source Generator that creates code to serialize/deserialize JSON. If you're unfamiliar with source generation in System.Text.Json, Microsoft has a good primer at: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/source-generation.
+This project generates C# source code files to add classes to a JsonSerializerContext class. It's additive to the built in System.Text.Json Source Generator, which creates code to serialize/deserialize JSON. If you're unfamiliar with source generation in System.Text.Json, Microsoft has a good primer at: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/source-generation.
 
-But as a recap, the purpose of source generation in System.Text.Json is to use a built-in C# Source Generator to generate code that can serialize/deserialize JSON objects without the use of reflection. The benefits of this are 1) the code generated is much faster than reflection, 2) you are able to use this in AOT code because AOT does not allow reflection.
+But as a recap, the purpose of source generation in System.Text.Json is to use a built-in C# Source Generator to generate code that can serialize/deserialize JSON objects without the use of reflection. The benefits of this are 1) the code generated is much faster than it is with reflection, and 2) you are able to use this in AOT code because AOT does not allow reflection.
 
 ## The Problem with System.Text.Json Source Generation
 
-The built-in source generator for System.Text.Json Serialization Context works great. That's not the problem. The problem is in how we as developers write the code to use it. The example below shows what happens when you have 4 endpoints, and each has a request and response object to be serialized. The example below has a `[JsonSerializable()]` attribute line for each request and response class to register what code the source generator will generate. As your application grows, this file grows with it. 4 endpoints is...pretty small. A real life application will likely have, I don't know, 50 endpoints? Let's say 50. That's 100 `[JsonSerializable()]` attribute lines above your Serializer Context class. 
+The built-in source generator for System.Text.Json Serialization Context works great. That's not the problem. The problem is in how we as developers write the code to use it. The example below shows what happens when you have an ASP.NET Core project with 4 endpoints, and each has a request and response object to be serialized. The example below has a `[JsonSerializable()]` attribute line for each request and response class. These classes are registered so the source generator knows what code to generate. As your application grows, this file grows with it. 4 endpoints is pretty small. A real life application will likely have, I don't know, 50 endpoints? Let's say 50. That's 100 `[JsonSerializable()]` attribute lines above your Serializer Context class. 
 
 ```csharp
 [JsonSerializable(typeof(WeatherForecastRequest))]
@@ -33,12 +33,12 @@ This project fixes that "problem" by letting you spread out the registrations to
 
 ## How to use this in your own code
 
-There are 2 steps you must complete. Step 1 is add some code to opt-in to what code will be gereated by this project. Step 2 is to setup your project to run this project to generate the code. The project in the `~/src/Sample` directory has a fully setup ASP.NET Core project using this project.
+There are 2 steps you must complete. Step 1 is to add code to opt-in to the code generation. Step 2 is to setup your project generate the code files. These steps are detailed below. For your reference, the project in the `~/src/Sample` directory has a fully setup ASP.NET Core project using the code generation.
 
-### Setp 1: Setup Your Code
+### Step 1: Setup Your Code
 
 1. In your C# project, add a NuGet reference to `ProgrammerAL.JsonSerializerRegistrationGenerator.Attributes`
-1. Create a `JsonSerializerContext` class like the `JsonSerializerContext Example` below. It must follow the rules:
+1. Create your JSON Serializer Context class like in the `JsonSerializerContext Example` below. It must follow the rules:
     1. Partial Class
     1. Inherits from `JsonSerializerContext`
     1. Add the `[JsonSourceGenerationOptions]` attribute
@@ -70,7 +70,7 @@ public record WeatherForecastRequest(string UtcTime);
 
 ### Step 2: Run This Project
 
-Now that your code has opted in to code generation, you need to run the .NET Tool `ProgrammerAL.JsonSerializerRegistrationGenerator.Runner` to generate the code files.
+Now that your code has opted in to code generation, you need to generate the code files using the the .NET Tool `ProgrammerAL.JsonSerializerRegistrationGenerator.Runner`.
 
 You can manually run the tool by following these steps.
 
@@ -79,7 +79,7 @@ You can manually run the tool by following these steps.
 
 Additionally you can automate these steps and make them run each time the project is built. You can create a script that will install/update the .NET tool, and then run it. The below code snippets show how to enable this. You need a PowerShell script that will install/update/run the .NET tool, and the second snippet goes inside the csproj file to run the PowerShell script before the build starts. A full example of this is in the `~/src/Sample` directory.
 
-PowerShell Script to install/update/run the .NET Tool. Assume this is stored as a local script called `run-json-serializer-registration-code-generation.ps1`:
+Create a PowerShell Script named `run-json-serializer-registration-code-generation.ps1`:
 
 ```console
 #Make sure a known version of the .NET Tool is installed
@@ -102,20 +102,33 @@ Running the PowerShell script during the build:
 
 Now that the code has been updated, and the generator has been automated. Compile your project to make sure this works correctly. One unfortunate issue due to this code being exported to a new file is that the first time you compile, the build will fail. Each compile after that should be successful.
 
+## Generic Registrations
+
+When registering generic classes with the System.Text.Json source generator, you need to specify all possible combinations of generic types you may need. If you know your generic will only ever work with numbers, you need to register `int`, `float`, `double`, `decimal`, etc.
+
+The example below is of a single class, but there are 3 possible generic types that are being registered(string, int, and DateTime). The source generator will output a line in the generated JSON Serializer Context class for each of the generic types.
+
+```csharp
+[RegisterJsonSerialization(typeof(AppJsonSerializerContext), genericTypes: ["string", "int", "System.DateTime"])]
+public record GenericRootCheckEndpointResponse<T>(T UtcTime);
+```
+
+To see a more fleshed out example of this, find the `GenericRootCheckEndpoint` and the `MultipleGenericRootEndpoint` classes in the `~/src/Sample` example project.
+
 ## Why Generate Files? Why not use a Source Generator?
 
 Source Generators are great, I love them. But there is no control over the time they run. For this project to work, we need to guarantee that our Source Generator runs before the built-in System.Text.Json generator. And unfortunatly, there's no way to do that. There's a ticket open on GitHub if you want to monitor it: https://github.com/dotnet/roslyn/issues/57239. If that ever happens, this project becomes just a single Source Generator. 
 
 Internally this project uses a source generator to create the code. It then outputs the generated code to a file. As a developer, you commit the generated file to source control.
 
-## `json-serializer-context-registrations-code-generator` CLI Options
+## .NET Tool CLI Options
 
 The .NET Tool that generates the code files has 2 required CLI inputs. The are:
 
--sources, -s
+- sources, -s
   - Required
   - Path to the root directory of a set of code files
--output, -o
+- output, -o
   - Required
   - Path to the directory to output files to
 
