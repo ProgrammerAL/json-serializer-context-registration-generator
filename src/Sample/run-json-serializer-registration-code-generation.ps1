@@ -1,6 +1,6 @@
 
 #Make sure a known version of the .NET Tool is installed
-& "dotnet" tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 0.0.1-preview.38
+& "dotnet" tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 1.0.0.46
 
 #Make sure we're using the latest version
 & "dotnet" tool update --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner

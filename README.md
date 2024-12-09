@@ -76,7 +76,7 @@ Now that your code has opted in to code generation, you need to generate the cod
 
 You can manually run the tool by following these steps.
 
-1. Install the .NET tool using `dotnet tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 0.0.1-preview.36`
+1. Install the .NET tool using `dotnet tool install --global ProgrammerAL.JsonSerializerRegistrationGenerator.Runner --version 1.0.0.46`
 1. Run the .NET Tool
 
 Additionally you can automate these steps and make them run each time the project is built. You can create a script that will install/update the .NET tool, and then run it. The below PowerShell code snippets show how to enable this. The snippet uses a PowerShell script that will install/update/run the .NET tool, and the second snippet goes inside the csproj file to run the PowerShell script before the build starts. A full example of this is in the `~/src/Sample` directory.
